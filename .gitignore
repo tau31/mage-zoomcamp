@@ -172,3 +172,5 @@ scratch*
 magic-zoomcamp
 *.json
 
+mage_data/
+.editorconfig

@@ -1,4 +1,4 @@
-version: '3'
+version: '12'
 services:
   magic:
     image: mageai/mageai:latest
@@ -17,13 +17,13 @@ services:
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_PORT: ${POSTGRES_PORT}
     ports:
-      - 5678:5678
+      - 6789:6789
     volumes:
       - .:/home/src/
-      - /Users/tiagocabaco/.gc/zoomcamp_gc.json:/home/src/personal-gcp.json
+      - ${GC_CRED_JSON}:/home/src/personal-gcp.json
     restart: on-failure:5
   postgres:
-    image: postgres:13
+    image: postgres:14
     restart: on-failure
     container_name: ${PROJECT_NAME}-postgres
     env_file:
@@ -33,4 +33,4 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "${POSTGRES_PORT}:5432"
+      - 5432:5432
